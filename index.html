@@ -7,7 +7,13 @@
     <title>Luxessence - Catálogo</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="gradual-blur.css">
-    <link rel="icon" href="images/logo.ico">
+    <link rel="icon" type="image/svg+xml" href="images/logo.svg">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#ffffff">
+    <!-- Apple Web App Capable -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="Luxessence">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <link rel="apple-touch-icon" href="images/logo-luxessence.svg">
 
     <!-- Font Awesome Icons -->
@@ -71,13 +77,15 @@
             <h1>Nuestro Catálogo</h1>
             <div class="productos-container">
                 <div id="category-filter" class="category-filter">
-                    <button class="scroll-left"><</button>
-                    <div id="category-list" class="category-list">
-                        <!-- Categories will be loaded here -->
-                    </div>
-                    <button class="scroll-right">></button>
+                    <button class="scroll-left">
+                        << /button>
+                            <div id="category-list" class="category-list">
+                                <!-- Categories will be loaded here -->
+                            </div>
+                            <button class="scroll-right">></button>
                 </div>
-                <button id="filter-toggle" class="filter-toggle-btn"><i class="fas fa-chevron-down"></i> Filtrar productos</button>
+                <button id="filter-toggle" class="filter-toggle-btn"><i class="fas fa-chevron-down"></i> Filtrar
+                    productos</button>
                 <div id="additional-filters" class="additional-filters">
                     <div class="stock-filter">
                         <button id="in-stock-filter" class="stock-btn"><i class="fas fa-check"></i> En Stock</button>
@@ -89,8 +97,10 @@
                         <span id="price-display">Hasta L. 2000</span>
                     </div>
                     <div class="filter-actions">
-                        <button id="apply-filters" class="apply-filters-btn"><i class="fas fa-filter"></i> Aplicar Filtros</button>
-                        <button id="clear-filters" class="clear-filters-btn"><i class="fas fa-trash"></i> Borrar Filtros</button>
+                        <button id="apply-filters" class="apply-filters-btn"><i class="fas fa-filter"></i> Aplicar
+                            Filtros</button>
+                        <button id="clear-filters" class="clear-filters-btn"><i class="fas fa-trash"></i> Borrar
+                            Filtros</button>
                     </div>
                 </div>
                 <div id="product-grid" class="product-grid">
