@@ -1,4 +1,4 @@
-const CACHE_NAME = 'luxessence-v2'; // Updated version to force cache refresh
+const CACHE_NAME = 'luxessence-v3'; // Updated version to force cache refresh
 const urlsToCache = [
   '/',
   '/index.html',
@@ -18,7 +18,7 @@ const urlsToCache = [
   '/images/products/Jibbitz.jpg',
   '/images/products/mandarin_sky.webp',
   '/images/products/Perry Elis for Women.png'
-];
+]; // Removed '/firebase-config.js'
 
 // Install service worker
 self.addEventListener('install', event => {
@@ -33,21 +33,21 @@ self.addEventListener('install', event => {
 
 // Fetch event with better offline handling
 self.addEventListener('fetch', event => {
-  // Handle external resources (Firebase, FontAwesome) differently
-  if (event.request.url.includes('firebase') ||
-      event.request.url.includes('font-awesome') ||
-      event.request.url.includes('gstatic.com') ||
-      event.request.url.includes('firestore.googleapis.com')) {
-    // For external resources, try network first, fall back to offline response
+  if (event.request.url.includes('firebase-config.js')) {
+    // Always fetch firebase-config.js from the network
+    event.respondWith(fetch(event.request));
+  } else if (event.request.url.includes('firebase') ||
+             event.request.url.includes('font-awesome') ||
+             event.request.url.includes('gstatic.com') ||
+             event.request.url.includes('firestore.googleapis.com')) {
+    // For other external resources, try network first, fall back to offline response
     event.respondWith(
       fetch(event.request)
         .catch(() => {
-          // Return a basic response for Firebase scripts when offline
           if (event.request.url.includes('firebase-app.js') ||
               event.request.url.includes('firebase-firestore.js')) {
             return new Response('// Firebase offline stub\nfunction(){}');
           }
-          // For other external resources, return empty response
           return new Response('');
         })
     );
